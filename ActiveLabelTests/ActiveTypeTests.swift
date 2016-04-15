@@ -202,7 +202,19 @@ class ActiveTypeTests: XCTestCase {
         XCTAssertEqual(currentElementString, "pic.twitter.com/YUGdEbUx")
         XCTAssertEqual(currentElementType, ActiveType.URL)
 
+        label.text = "http://google.com"
+        XCTAssertEqual(activeElements.count, 1)
+
         label.text = "google.com"
+        XCTAssertEqual(activeElements.count, 0)
+
+        label.text = "notaurl"
+        XCTAssertEqual(activeElements.count, 0)
+
+        label.text = "picnotaurl"
+        XCTAssertEqual(activeElements.count, 0)
+
+        label.text = "wwwnotaurl"
         XCTAssertEqual(activeElements.count, 0)
     }
 
